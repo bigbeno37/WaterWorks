@@ -1,4 +1,5 @@
 from time import sleep
+from sys import exit
 
 class Main(object):
     debugMode = False
@@ -8,7 +9,10 @@ class Main(object):
     
     def intro(self):      
         print("Welcome to WaterWorks v0.1!")
-        name = input("What is your name? ")
+        try:
+            name = raw_input("What is your name? ")
+        except NameError:
+            name = input("What is your name? ")
         print("Hello, " + name + ". Time to begin!")
         sleep(2) if self.debugMode == False else sleep(0)
     
@@ -19,7 +23,10 @@ class Main(object):
                 sleep(2)
                 
     def answers(self, question, answer):
-        inputAnswer = input("What do you do?\n" + question + " ").replace(' ', '').lower()
+        try:
+            inputAnswer = raw_input("What do you do?\n" + question + " ").replace(' ', '').lower()
+        except NameError:
+            inputAnswer = input("What do you do?\n" + question + " ").replace(' ', '').lower()
         
         if inputAnswer in answer:
             return inputAnswer
@@ -30,16 +37,7 @@ class Main(object):
         print("Command not recognised!")
         self.answers(x, y)
         
-    def endGame(self, name, leaderboard):
+    def endGame(self, points):
         print("Unfortunately, you did not make it to the end of the game")
-        print("You reached a score of " + points "!")
-        
-        if len(leaderboard) > 0:
-            print("The leaderboard is currently: ")
-        else:
-            print("The leaderboard is currently empty!")
-            
-    def showLeaderboard(self, name, leaderboard, file):
-        answer = input("Do you want to save your score?")
-        if answer == 'Y':
-            
+        print("You reached a score of " + str(points) + "!")
+        exit()
