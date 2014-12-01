@@ -9,7 +9,7 @@ textArray = [line.strip() for line in open('Data/text')]
 questionArray = [line.strip() for line in open('Data/questions')]
 answerArray = [line.strip() for line in open('Data/answers')]
 
-m.setDebugMode(False)
+m.setDebugMode(True)
 
 m.intro()
 

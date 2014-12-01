@@ -1,5 +1,6 @@
 from time import sleep
 from sys import exit
+from os import system
 
 class Main(object):
     debugMode = False
@@ -44,11 +45,14 @@ class Main(object):
             print("You reached a score of " + str(points) + "!")
         elif bad_end == True:
             print("BAD END")
-            self.credits()
+            self.credits(True)
         elif good_end == True:
             print("GOOD END")
             self.credits()
 
-    def credits(self):
+    def credits(self, ending=False):
         self.displayText(["WaterWorks", "Created and debugged by Ben O'Sullivan", "Inspiration from the works of Oliver MacPherson", "Thanks for playing " + self.name + "!"], 4)
+        if ending == True:
+            print("Now play WaterWorks part 2!")
+            system("python Data/waterworks2.py")
         exit()
